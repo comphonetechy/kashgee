@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GCash UI Sample</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+    }
+    .header {
+      background-color: #0077ff;
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+    .balance {
+      background-color: #0077ff;
+      color: white;
+      text-align: center;
+      padding: 10px 0 20px;
+    }
+    .balance h2 {
+      margin: 5px 0;
+      font-size: 26px;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      background: white;
+      padding: 20px;
+    }
+    .feature {
+      text-align: center;
+      font-size: 14px;
+    }
+    .feature .icon {
+      width: 50px;
+      height: 50px;
+      background: #e6f0ff;
+      border-radius: 50%;
+      margin: 0 auto 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: #0077ff;
+    }
+    .section {
+      margin: 10px;
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    .section h3 {
+      margin: 0;
+      font-size: 16px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>KashGee</h1>
+    <h2 th:text="${username}"></h2>
+  </div>
+
+  <div class="balance">
+    <p>Available Balance</p>
+    <h2>₱<span th:text="${amount}">0.00</span></h2>
+  </div>
+
+  <div class="features">
+    <div class="feature">
+      <div class="icon">💵</div>
+      <p>Cash In</p>
+    </div>
+    <div class="feature">
+        <a href="/getExpressSend">
+                  <div class="icon">📤</div>
+      <p>Send Money</p>
+        </a>
+
+    </div>
+    <div class="feature">
+      <div class="icon">🐖</div>
+      <p>Save Money</p>
+    </div>
+    <!-- <div class="feature">
+      <div class="icon">📱</div>
+      <p>Buy Load</p>
+    </div> -->
+    <div class="feature">
+      <div class="icon">➜]</div>
+      <a href="/logout">Logout</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3>Transaction History</h3>
+    <ul>
+    <li th:if="${transactionLog == null or #lists.isEmpty(transactionLog)}">No recent transactions</li>
+    <li th:each="log : ${transactionLog}" th:text="${log}" th:unless="${transactionLog == null or #lists.isEmpty(transactionLog)}"></li>
+    </ul>
+  </div>
+</body>
+</html>
