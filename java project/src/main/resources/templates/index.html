@@ -68,7 +68,7 @@
 <body>
   <div class="header">
     <h1>KashGee</h1>
-    <h2>Sarah Discaya</h2>
+    <h2 th:text="${username}"></h2>
   </div>
 
   <div class="balance">
@@ -92,9 +92,13 @@
       <div class="icon">🐖</div>
       <p>Save Money</p>
     </div>
-    <div class="feature">
+    <!-- <div class="feature">
       <div class="icon">📱</div>
       <p>Buy Load</p>
+    </div> -->
+    <div class="feature">
+      <div class="icon">➜]</div>
+      <a href="/logout">Logout</a>
     </div>
   </div>
 

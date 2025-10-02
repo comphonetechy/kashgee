@@ -1,3 +1,2 @@
-com\example\helloworldapp\HelloWorldApplication.class
-com\example\helloworldapp\controller\HomeController.class
-com\example\helloworldapp\controller\Stringing.class
+com\example\kashgee\controller\Stringing.class
+com\example\kashgee\Kashgee.class

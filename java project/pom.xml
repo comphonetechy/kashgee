@@ -6,12 +6,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>hello-world-app</artifactId>
+    <artifactId>kashgee</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>Hello World Spring Boot App</name>
-    <description>Simple Spring Boot application with Hello World page</description>
+    <name>Kashgee Banking App</name>
+    <description>Simple Spring Boot banking application</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -34,7 +34,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Spring Boot Thymeleaf (optional for templating) -->
+        <!-- Spring Boot Thymeleaf -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
