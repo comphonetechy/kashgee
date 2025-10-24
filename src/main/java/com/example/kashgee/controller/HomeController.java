@@ -1,8 +1,8 @@
 
 package com.example.kashgee.controller;
 
-import com.example.kashgee.model.Transaction;
-import com.example.kashgee.service.BankingService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.kashgee.model.Transaction;
+import com.example.kashgee.service.BankingService;
+
 import jakarta.servlet.http.HttpSession;
-import java.util.List;
 
 @Controller
 public class HomeController {
@@ -81,4 +83,38 @@ public class HomeController {
         
         return "redirect:/bankingapp";
     }
+
+
+ @GetMapping("/getDeposit")
+    public String getDeposit(HttpSession session, Model model) {
+        if (!isLoggedIn(session)) {
+            return "redirect:/login";
+        }
+        
+  
+        return "deposit";
+    }
+
+
+    @PostMapping("/postDeposit")
+    public String postDeposit(
+            HttpSession session,
+            @RequestParam("amount") int amount,
+            RedirectAttributes redirectAttributes) {
+        
+        if (!isLoggedIn(session)) {
+            return "redirect:/login";
+        }
+        
+        try {
+            bankingService.depositMoney(amount);
+            redirectAttributes.addFlashAttribute("successMessage", 
+                "Successfully deposited ₱" + amount);
+        } catch (IllegalArgumentException e) {
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+        }
+        
+        return "redirect:/bankingapp";
+    }
+
 }
